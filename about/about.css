@@ -1,0 +1,273 @@
+@import url('/global.css');
+
+.navbar {
+  box-shadow: 0 15px 15px rgba(0,0,0,0.09);
+}
+
+.about-hero {
+  margin-top: 2rem;
+  position: relative;
+  background: linear-gradient(135deg, var(--dark-green), #153d75);
+  padding: 120px 80px 100px;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Zigzag Edge at the Top */
+.about-zigzag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: url('../assets/readymask.png') center/cover no-repeat;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Text Styling */
+.about-text h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+
+.about-text h1 span {
+  color: var(--primary-gold);
+}
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* Polaroid Styling */
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.polaroid-frame {
+  background: white;
+  padding: 15px 15px 40px 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: rotate(4deg); /* The "tilted" look */
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-frame img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  filter: grayscale(100%);
+}
+
+/* --- ABOUT HERO INITIAL STATE --- */
+
+/* Text Mask Reveal */
+.about-text h1 {
+  opacity: 0;
+  transform: translateY(100%);
+  clip-path: inset(0 0 100% 0);
+  will-change: transform, clip-path, opacity;
+}
+
+.about-text p {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+/* Polaroid "Physical" Entry */
+.polaroid-frame {
+  opacity: 0;
+  /* Starts higher, more rotated, and slightly larger */
+  transform: translateY(-50px) rotate(15deg) scale(1.1);
+  will-change: transform, opacity;
+}
+
+/* Zigzag Entrance */
+.about-zigzag {
+  transform: translateY(-100%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- THE REVEAL LOGIC (When active) --- */
+
+/* Zigzag slides down first */
+.about-hero.reveal-active .about-zigzag {
+  transform: translateY(0);
+}
+
+/* Heading Rises (Editorial Style) */
+.about-hero.reveal-active .about-text h1 {
+  opacity: 1;
+  transform: translateY(0);
+  clip-path: inset(0 0 0 0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              opacity 0.4s ease 0.3s;
+}
+
+/* Paragraph follows */
+.about-hero.reveal-active .about-text p {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+}
+
+/* 4. Polaroid Drops and Settles */
+.about-hero.reveal-active .polaroid-frame {
+  opacity: 1;
+  /* Settles into your original 4deg rotation */
+  transform: translateY(0) rotate(4deg) scale(1);
+  transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s;
+}
+
+/* --- REFINED HOVER --- */
+/* We keep your hover, but make sure it plays nice with the animation */
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.05) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+
+
+
+
+
+/* VALUES SECTION */
+.values-section {
+  padding: 100px 40px;
+  background-color: var(--surface-base);
+  overflow: hidden; /* Clips the slanted card if it overflows the screen */
+}
+
+.values-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  /* Left card is wider than the other two */
+  grid-template-columns: 1.5fr 1fr 1fr; 
+  gap: 30px;
+  align-items: stretch;
+}
+
+.value-card {
+  padding: 50px 40px;
+  border-radius: 4px; /* Keeping the sharp, premium edges from your design */
+  display: flex;
+  flex-direction: column;
+}
+
+/* PURPOSE CARD */
+.purpose-card {
+  background: linear-gradient(180deg, var(--surface-soft), #f8fbff);
+  justify-content: center;
+  height: 80%;
+  border-top: 5px solid var(--primary-gold);
+}
+
+.purpose-card .sub-label {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.purpose-card h2 {
+  font-size: 2rem;
+  color: var(--heading-text);
+  line-height: 1.1;
+  font-weight: 900;
+  max-width: 400px;
+}
+
+/* VISION CARD */
+.vision-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-top: 4px solid var(--accent-gold);
+  border-radius: 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.vision-card h3, .mission-card h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.vision-card p, .mission-card p {
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.vision-card .icon-wrap img {
+  width: 30px;
+  margin-bottom: 30px;
+}
+
+/* MISSION CARD (Slanted) */
+.value-card-wrapper {
+  /* This wrapper holds the rotation without affecting grid alignment */
+  perspective: 1000px;
+}
+
+.mission-card {
+  background: linear-gradient(150deg, var(--dark-green), #163f76);
+  color: white;
+  height: 100%;
+  transform: rotate(3deg) translateY(10px); /* The signature slant */
+  box-shadow: var(--shadow-strong);
+}
+
+.mission-card .icon-wrap img {
+  width: 35px;
+  margin-bottom: 30px;
+}
+
+.mission-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+/* VALUES INITIAL STATE */
+.value-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* REVEAL LOGIC */
+.values-section.reveal-active .value-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stagger the three cards */
+.values-section.reveal-active .purpose-card { transition-delay: 0.1s; }
+.values-section.reveal-active .vision-card  { transition-delay: 0.3s; }
+.values-section.reveal-active .mission-card { transition-delay: 0.5s; }

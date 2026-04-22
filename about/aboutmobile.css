@@ -1,0 +1,54 @@
+@import url('/mobile.css');
+
+.about-hero {
+  padding: 100px 24px 60px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.about-container {
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.about-text h1 {
+  font-size: 3rem;
+}
+
+.about-text p {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.polaroid-frame {
+  transform: rotate(2deg);
+  padding: 10px 10px 50px 10px;
+}
+
+
+
+
+/* VALUE SECTION */
+.values-container {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.purpose-card h2 {
+  font-size: 1.5rem;
+}
+
+.mission-card {
+  transform: rotate(-2deg);
+  margin-top: 20px;
+}
+
+.vision-card p, .mission-card p {
+  line-height: 1.6;
+  font-size: .9rem;
+}
+
+.values-section {
+  padding: 60px 20px;
+  margin-bottom: 1.5rem;
+}

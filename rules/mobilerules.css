@@ -1,0 +1,55 @@
+@import url('/mobile.css');
+
+.rules-hero {
+  padding: 120px 24px 60px;
+  min-height: auto;
+  background: 
+    linear-gradient(rgba(244, 248, 252, 0.9), rgba(244, 248, 252, 0.9)),
+    url('../assets/rulesheroimg.jpg') center/cover no-repeat;
+}
+
+.rules-hero-container {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.rules-hero-left h1 {
+  font-size: 2.5rem;
+}
+
+.rules-hero-right {
+  max-width: 100%;
+  padding-bottom: 0;
+}
+
+.rules-hero-right p {
+  font-size: 1.1rem;
+}
+
+
+
+
+/* COURT RULES SECTION */
+.rules-top {
+  flex-direction: column;
+  padding: 20px 10px;
+}
+
+.safety {
+  flex-direction: column;
+  margin: 10px;
+  margin-bottom: 40px;
+}
+
+.safety h2 img {
+  width: 15px;
+}
+
+.grid {
+  grid-template-columns: 1fr;
+}
+
+.safety-image {
+  min-height: 200px;
+}

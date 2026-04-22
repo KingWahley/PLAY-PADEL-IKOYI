@@ -1,0 +1,441 @@
+@import url('/global.css');
+
+.navbar {
+  box-shadow: 0 15px 15px rgba(0,0,0,0.09);
+}
+
+.rules-hero {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  background: 
+    linear-gradient(to right, rgba(244, 248, 252, 0.94) 100%, rgba(234, 241, 249, 0.78)),
+    url('../assets/rulesheroimg.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 120px 80px 80px;
+}
+
+.rules-hero-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: 100px;
+}
+
+/* LEFT SIDE */
+.rules-hero-left .elite-label {
+  display: block;
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.rules-hero-left h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 6rem;
+  line-height: 0.9;
+  font-weight: 900;
+  color: var(--heading-text);
+  margin: 0;
+}
+
+/* RIGHT SIDE */
+.rules-hero-right {
+  max-width: 450px;
+  padding-bottom: 15px;
+}
+
+.rules-hero-right p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --- RULES HERO INITIAL STATE --- */
+.rules-hero-left .elite-label {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.rules-hero-left h1 {
+  opacity: 0;
+  transform: translateY(100%);
+  clip-path: inset(0 0 100% 0);
+  will-change: transform, clip-path;
+}
+
+.rules-hero-right p {
+  opacity: 0;
+  transform: translateX(30px);
+  will-change: transform, opacity;
+}
+
+/* --- THE REVEAL LOGIC (.reveal-active) --- */
+
+/* Label slides up first */
+.rules-hero.reveal-active .elite-label {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease 0.1s;
+}
+
+/* "CLUB ETIQUETTE" Rises (Editorial Mask) */
+.rules-hero.reveal-active h1 {
+  opacity: 1;
+  transform: translateY(0);
+  clip-path: inset(0 0 0 0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+/* Right paragraph slides in */
+.rules-hero.reveal-active .rules-hero-right p {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+}
+
+
+
+/* COURT RULES SECTION */
+.rules-top {
+  display: flex;
+  gap: 30px;
+  padding: 20px 40px;
+}
+
+/* LEFT CARD */
+.court-rules {
+  flex: 2;
+  background: var(--surface-soft);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle right image overlay */
+.court-rules::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: url('../assets/courtfaded.png') center/cover no-repeat;
+  opacity: 0.08;
+}
+
+/* rules */
+.rule {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.icon {
+  color: var(--primary-gold);
+}
+
+.rule h4 {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: var(--heading-text);
+}
+
+.rule p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* RIGHT CARD */
+.booking {
+  flex: 1;
+  background: linear-gradient(160deg, var(--dark-green), #153d75);
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.booking img {
+  margin-bottom: 1rem;
+}
+
+.booking ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.booking li {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.booking button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--primary-gold);
+  background: transparent;
+  color: var(--primary-gold);
+  cursor: pointer;
+}
+
+
+
+
+/* --- RULES TOP INITIAL STATE (Hidden) --- */
+
+.court-rules {
+  opacity: 0;
+  transform: translateX(-40px);
+  will-change: transform, opacity;
+}
+
+/* Individual rules inside the left card */
+.court-rules .rule {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* The dark booking card */
+.booking {
+  opacity: 0;
+  transform: translateX(40px);
+  will-change: transform, opacity;
+}
+
+/* The list items inside the booking card */
+.booking li {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+/* The subtle background court image */
+.court-rules::after {
+  opacity: 0 !important; /* Override the 0.08 initial opacity */
+  transition: opacity 2s ease;
+}
+
+/* --- THE REVEAL LOGIC (.reveal-active) --- */
+
+/* 1. Main Cards slide in from sides */
+.rules-top.reveal-active .court-rules,
+.rules-top.reveal-active .booking {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. The faded background image appears slowly */
+.rules-top.reveal-active .court-rules::after {
+  opacity: 0.08 !important;
+  transition-delay: 0.8s;
+}
+
+/* 3. Left Side: Rules Cascade */
+.rules-top.reveal-active .rule {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rules-top.reveal-active .rule:nth-child(2) { transition-delay: 0.4s; } /* Adhere to time */
+.rules-top.reveal-active .rule:nth-child(3) { transition-delay: 0.55s; } /* Sports Attire */
+.rules-top.reveal-active .rule:nth-child(4) { transition-delay: 0.7s; } /* Equipment */
+
+/* 4. Right Side: Booking Points Slide In */
+.rules-top.reveal-active .booking li {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rules-top.reveal-active .booking li:nth-child(1) { transition-delay: 0.8s; }
+.rules-top.reveal-active .booking li:nth-child(2) { transition-delay: 0.9s; }
+.rules-top.reveal-active .booking li:nth-child(3) { transition-delay: 1.0s; }
+
+
+/* --- INTERACTIVE POLISH (Hovers) --- */
+
+/* Lift the rules on hover */
+.rule {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.rule:hover {
+  transform: translateX(10px);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Make the booking card feel deep and premium */
+.booking {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.booking:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Golden Button Hover */
+.booking button {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.booking button:hover {
+  background-color: var(--primary-gold);
+  color: var(--dark-green);
+  transform: scale(1.05);
+}
+
+
+
+/* SAFETY SECTION */
+.safety {
+  display: flex;
+  margin: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* LEFT */
+.safety-left {
+  flex: 1;
+  background: var(--surface-soft);
+  padding: 40px;
+}
+
+.safety-left h2{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.safety-left h2 img {
+  width: 20px;
+  height: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.grid h4 {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: var(--heading-text);
+}
+
+.grid p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* RIGHT IMAGE */
+.safety-image {
+  flex: 1;
+  background: url('../assets/safetybg.jpg') center/cover no-repeat;
+  min-height: 400px;
+}
+
+
+
+/* --- SAFETY SECTION INITIAL STATE (Hidden) --- */
+
+.safety-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  will-change: transform, opacity;
+}
+
+.safety-image {
+  opacity: 0;
+  transform: translateX(50px) scale(1.1); /* Starts slightly zoomed for a 'zoom-out' effect */
+  will-change: transform, opacity;
+}
+
+/* Individual Grid Protocol Cards */
+.grid div {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* --- THE REVEAL LOGIC (.reveal-active) --- */
+
+/* 1. The two halves slide together */
+.safety.reveal-active .safety-left,
+.safety.reveal-active .safety-image {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. The Grid Items "Pop" in a sequence */
+.safety.reveal-active .grid div {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sequential delay for the 4 safety cards */
+.safety.reveal-active .grid div:nth-child(1) { transition-delay: 0.5s; }
+.safety.reveal-active .grid div:nth-child(2) { transition-delay: 0.65s; }
+.safety.reveal-active .grid div:nth-child(3) { transition-delay: 0.8s; }
+.safety.reveal-active .grid div:nth-child(4) { transition-delay: 0.95s; }
+
+
+/* --- MODERN INTERACTIONS (The "Love" factor) --- */
+
+/* Image Zoom on Hover */
+.safety-image {
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.safety:hover .safety-image {
+  transform: scale(1.05); /* Subtle breathing effect when hovering the section */
+}
+
+/* Grid Card Interactions */
+.grid div {
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.grid div:hover {
+  background-color: rgba(37, 99, 235, 0.08);
+  transform: translateY(-5px);
+}
+
+.grid h4 {
+  position: relative;
+  display: inline-block;
+}
+
+/* Small underline effect on protocol titles when hovering */
+.grid h4::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary-gold);
+  transition: width 0.3s ease;
+}
+
+.grid div:hover h4::after {
+  width: 100%;
+}

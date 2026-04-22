@@ -1,0 +1,84 @@
+@import url('/mobile.css');
+
+.editorial-section {
+  flex-direction: column;
+  padding: 40px 15px;
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.line-1, .line-2 {
+  font-size: 45px;
+}
+
+.editorial-section p {
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 1rem;
+  padding-left: 15px;
+  font-size: .9rem;
+}
+
+.court-bookings {
+  padding: 15px;
+}
+
+.title-style {
+  gap: 5px;
+}
+
+
+
+/* COURT BOOKINGS */
+.court-bookings {
+  margin-bottom: 2rem;
+}
+.court-bookings .title {
+  font-size: 20px;
+}
+
+.court-bookings .cards {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.court-bookings .cards .card h3 {
+  font-size: 20px;
+}
+
+.court-bookings .cards .card .sub {
+  font-size: 12px;
+}
+
+.court-bookings .cards .card .price {
+  font-size: 40px;
+}
+
+.court-bookings .cards .card .price span {
+  font-size: 12px;
+}
+
+.court-bookings .cards .card .features p {
+  font-size: 10px;
+}
+
+.court-bookings .cards .card .cta.link {
+  padding-bottom: 12px;
+}
+
+.court-bookings .cards .card.highlight {
+  height: 350px;
+}
+
+
+
+
+.court-bookings .cards .card.first .price,
+.court-bookings .cards .card.second .price,
+.court-bookings .cards .card.third .price {
+  font-size: 35px;
+}

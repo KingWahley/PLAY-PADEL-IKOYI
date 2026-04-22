@@ -1,0 +1,432 @@
+@import url('/global.css');
+
+
+:root {
+  --bento-bg-beige: #eaf1f9;
+  --bento-dark-green: #0b1f3a;
+  --bento-input-bg: #edf4fb;
+  --bento-text-label: #475569;
+}
+
+.navbar {
+  box-shadow: 0 15px 15px rgba(0,0,0,0.09);
+}
+
+.contact-bento-section {
+  margin-top: 2rem;
+  padding: 90px 40px;
+  background-color: var(--surface-base);
+  font-family: 'Barlow', sans-serif;
+}
+
+.contact-bento-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3 and 2/3 split */
+  gap: 30px;
+  align-items: start;
+}
+
+/* LEFT CARD STYLING */
+.direct-channels-card {
+  background-color: var(--bento-bg-beige);
+  padding: 40px;
+  border-radius: 24px;
+  height: 70%;
+  border-top: 5px solid var(--accent-gold);
+}
+
+.direct-channels-card h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--dark-green);
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-box {
+  background: linear-gradient(135deg, var(--accent-gold), #1d4ed8);
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-box img {
+  width: 20px;
+}
+
+.channel-info span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--bento-text-label);
+  margin-bottom: 4px;
+}
+
+.channel-info p {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--dark-green);
+  line-height: 1.4;
+}
+
+/* RIGHT CARD STYLING */
+.contact-form-card {
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+}
+
+.form-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  color: var(--bento-dark-green);
+  margin-bottom: 10px;
+}
+
+.form-header p {
+  color: var(--bento-text-label);
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.bento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--bento-text-label);
+}
+
+.form-group input, 
+.form-group textarea {
+  background-color: var(--bento-input-bg);
+  border: none;
+  padding: 18px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  height: 180px;
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.btn-send {
+  background: linear-gradient(135deg, var(--primary-gold), var(--cta-strong));
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px; /* Fully rounded button */
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 10px;
+  transition: 0.3s;
+  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.24);
+}
+
+.btn-send:hover {
+  background: linear-gradient(135deg, #fb923c, var(--primary-gold));
+  transform: translateY(-2px);
+}
+
+/* --- CONTACT INITIAL STATE --- */
+
+/* Left Side (Channels) */
+.direct-channels-card {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.channel-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Right Side (Form) */
+.contact-form-card {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-group, .btn-send {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* --- THE REVEAL LOGIC (.reveal-active) --- */
+
+/* 1. Both main cards slide into place */
+.contact-bento-section.reveal-active .direct-channels-card,
+.contact-bento-section.reveal-active .contact-form-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 2. Staggered reveal for Channel Items (Left) */
+.contact-bento-section.reveal-active .channel-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-bento-section.reveal-active .channel-item:nth-child(1) { transition-delay: 0.4s; }
+.contact-bento-section.reveal-active .channel-item:nth-child(2) { transition-delay: 0.55s; }
+.contact-bento-section.reveal-active .channel-item:nth-child(3) { transition-delay: 0.7s; }
+
+/* 3. Staggered reveal for Form Elements (Right) */
+.contact-bento-section.reveal-active .form-group,
+.contact-bento-section.reveal-active .btn-send {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-bento-section.reveal-active .form-group:nth-child(1) { transition-delay: 0.5s; }
+.contact-bento-section.reveal-active .form-group:nth-child(2) { transition-delay: 0.6s; }
+.contact-bento-section.reveal-active .btn-send { transition-delay: 0.8s; }
+
+
+/* --- MODERN HOVERS (The Premium Polish) --- */
+
+/* Icon Boxes Pulse on Hover */
+.icon-box {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+}
+
+.channel-item:hover .icon-box {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, var(--primary-gold), var(--cta-strong));
+}
+
+/* Input Field Focus Interaction */
+.form-group input, 
+.form-group textarea {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  background-color: #fff;
+  border: 1px solid var(--accent-gold);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.08);
+}
+
+/* Button Pulse */
+.btn-send {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-send:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 34px rgba(249, 115, 22, 0.32);
+}
+
+
+
+
+/* MAP SECTION */
+.map-section {
+  position: relative;
+  width: 100%;
+  height: 600px; 
+  padding: 40px;
+  background-color: #fff;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  /* This filter creates the grey-scale design aesthetic */
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(1.1) brightness(1.1);
+}
+
+/* Floating Info Card */
+.map-info-card {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  z-index: 10;
+  background-color: var(--surface-soft);
+  padding: 35px;
+  border-radius: 15px;
+  max-width: 320px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* The Gold Border Accent */
+  border-left: 6px solid var(--primary-gold);
+}
+
+.map-info-card h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--dark-green, #00342b);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.map-info-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Custom Center Pin Replica */
+.custom-map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.pin-circle {
+  width: 50px;
+  height: 50px;
+  /* background-color: var(--dark-green); */
+  background: linear-gradient(135deg, var(--accent-gold), #1d4ed8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.3); */
+}
+
+.pin-circle img {
+  width: 20px;
+  height: auto;
+}
+
+
+
+/* --- MAP INITIAL STATE --- */
+
+.map-wrapper {
+  opacity: 0;
+  transform: scale(1.05); /* Starts slightly zoomed in */
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
+}
+
+.map-info-card {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-map-pin {
+  opacity: 0;
+  /* Starts higher up to "drop" in */
+  transform: translate(-50%, -150%); 
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy landing */
+}
+
+/* --- THE REVEAL LOGIC (.reveal-active) --- */
+
+/* The Map expands and settles */
+.map-section.reveal-active .map-wrapper {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* The Info Card slides in */
+.map-section.reveal-active .map-info-card {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+
+/* The Pin drops with a bounce */
+.map-section.reveal-active .custom-map-pin {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.8s;
+}
+
+/* --- THE "LOVE" FACTOR: INTERACTION --- */
+
+/* Pulse effect for the pin to make it look 'live' */
+@keyframes pinPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.36); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+.reveal-active .pin-circle {
+  animation: pinPulse 2s infinite;
+}
+
+/* Hover over the info card to emphasize the gold border */
+.map-info-card {
+  transition: transform 0.4s ease, border-left-width 0.3s ease;
+}
+
+.map-info-card:hover {
+  transform: translateX(10px);
+  border-left-width: 12px;
+}
+
+/* Map Zoom Hover Effect */
+.map-wrapper iframe {
+  transition: filter 0.5s ease;
+}
+
+.map-wrapper:hover iframe {
+  filter: grayscale(0%) contrast(1) brightness(1); /* Reveal color on hover */
+}

@@ -1,0 +1,63 @@
+@import url('/mobile.css');
+
+.contact-bento-section {
+  padding: 70px 20px 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Ensure container stays within bounds */
+.contact-bento-container {
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 30px;
+}
+
+.contact-form-card {
+  padding: 30px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure inputs don't push outside the card */
+.form-row, .form-group {
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+input, textarea {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* --- MAP SECTION --- */
+.map-section {
+  padding: 0 20px;
+  height: auto;
+  margin-bottom: 80px;
+}
+
+.map-info-card {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 25px;
+  padding: 25px;
+  box-sizing: border-box;
+  background-color: var(--surface-soft);
+  border-left: 6px solid var(--primary-gold);
+  border-radius: 15px;
+}
+
+.map-wrapper {
+  height: 500px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  filter: grayscale(100%);
+}
+
+.map-wrapper iframe {
+  height: 100%;
+}

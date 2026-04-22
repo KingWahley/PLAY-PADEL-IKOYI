@@ -1,0 +1,30 @@
+@import url('/mobile.css');
+
+.container {
+  padding: 50px 15px;
+}
+
+.label{
+  font-size: 10px;
+}
+
+.title {
+  font-size: 1.1rem;
+}
+
+.faq-item {
+  padding: 15px;
+  font-size: 14px;
+}
+
+.support-card h2 {
+  font-size: 24px;
+}
+
+.support-card p {
+  width: 100%;
+  font-size: 12px;
+}
+.support-card a {
+  width: 100%;
+}

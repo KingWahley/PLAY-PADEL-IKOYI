@@ -1,0 +1,189 @@
+@import url('/global.css');
+
+body {
+  background-color: var(--surface-base);
+}
+
+.navbar {
+  box-shadow: 0 15px 15px rgba(0,0,0,0.09);
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 60px 20px;
+  margin-top: 3rem;
+}
+
+.label {
+  color: var(--accent-gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: var(--dark-green);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+/* Search */
+.search-box input {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: none;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-soft);
+  font-size: 16px;
+  outline: none;
+}
+
+/* FAQ */
+.faq-list {
+  margin-top: 25px;
+}
+
+/* FAQ Item Container */
+.faq-item {
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  overflow: hidden; /* Clips the answer when closed */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(215, 227, 243, 0.9);
+}
+
+.faq-question {
+  padding: 22px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: var(--dark-green);
+}
+
+.faq-question img {
+  width: 14px;
+  transition: transform 0.4s ease;
+}
+
+/* The Answer Block (Hidden by default) */
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 22px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer p {
+  padding-bottom: 22px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ACTIVE STATE (Toggled by JS) */
+.faq-item.active {
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Adjust based on answer length */
+  opacity: 1;
+  padding-top: 5px;
+}
+
+.faq-item.active .faq-question img {
+  transform: rotate(180deg); /* Flip the arrow */
+}
+
+/* Hover effect */
+.faq-item:hover:not(.active) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+.faq-item span {
+  color: var(--primary-gold);
+  font-size: 18px;
+}
+
+/* Location Card */
+.location-card {
+  background: 
+    linear-gradient(rgba(11, 31, 58, 0.58), rgba(11, 31, 58, 0.58)),
+    url('../assets/faqlocationbg.png') center/cover no-repeat;
+  color: #fff;
+  border-radius: 22px;
+  padding: 20px;
+  margin: 40px 0;
+  height: 250px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.location-card h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.location-card p {
+  margin-bottom: 20px;
+}
+
+.location-card a {
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary-gold), var(--cta-strong));
+  color: #fff;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Support Card */
+.support-card {
+  background: var(--surface-soft);
+  padding: 50px 30px;
+  border-radius: 28px;
+  text-align: center;
+}
+
+.support-card h2 {
+  font-size: 28px;
+  color: var(--dark-green);
+  margin-bottom: 10px;
+}
+
+.support-card p {
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto 25px;
+  width: 70%;
+  font-size: 14px;
+}
+
+.support-card a {
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent-gold), #1d4ed8);
+  color: #eff6ff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
