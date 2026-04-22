@@ -602,7 +602,7 @@ h1, h2, h3 {
 .intro-section.reveal-active .padel-cards .card:nth-child(3) { transition-delay: 0.9s; }
 .intro-section.reveal-active .padel-cards .card:nth-child(4) { transition-delay: 1.05s; }
 
-@media (max-width: 1100px) and (min-width: 769px) {
+@media (max-width: 1100px) and (min-width: 901px) {
   .padel-cards .card {
     flex-basis: calc((100% - 20px) / 2);
   }
