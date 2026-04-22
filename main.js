@@ -92,6 +92,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100); 
   });
 
+  // --- HOMEPAGE EXPERIENCE SLIDER ---
+  const padelSlider = document.querySelector('[data-slider]');
+
+  if (padelSlider) {
+    const track = padelSlider.querySelector('[data-slider-track]');
+    const prevButton = padelSlider.querySelector('[data-slider-prev]');
+    const nextButton = padelSlider.querySelector('[data-slider-next]');
+
+    if (track && prevButton && nextButton) {
+      const getStepSize = () => {
+        const firstCard = track.querySelector('.card');
+        if (!firstCard) return track.clientWidth;
+
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const trackStyles = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0');
+        return cardWidth + gap;
+      };
+
+      const updateSliderButtons = () => {
+        const maxScrollLeft = track.scrollWidth - track.clientWidth;
+        prevButton.disabled = track.scrollLeft <= 8;
+        nextButton.disabled = track.scrollLeft >= maxScrollLeft - 8;
+      };
+
+      const scrollTrack = (direction) => {
+        track.scrollBy({
+          left: getStepSize() * direction,
+          behavior: 'smooth'
+        });
+      };
+
+      prevButton.addEventListener('click', () => scrollTrack(-1));
+      nextButton.addEventListener('click', () => scrollTrack(1));
+
+      track.addEventListener('scroll', updateSliderButtons, { passive: true });
+      window.addEventListener('resize', updateSliderButtons);
+
+      updateSliderButtons();
+    }
+  }
+
 
   // --- FAQ ACCORDION LOGIC ---
   const faqItems = document.querySelectorAll('.faq-item');

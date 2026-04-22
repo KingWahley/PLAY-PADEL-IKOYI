@@ -58,7 +58,7 @@ h1, h2, h3 {
   height: 100%;
   background: 
     linear-gradient(to right, rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.45), rgba(11, 31, 58, 0.12)),
-    url('/assets/heroimg.jpg') center/cover no-repeat;
+    url('/assets/hero2.jpg') center/cover no-repeat;
   background-position: 50% 35%;
   z-index: 0;
   transform-origin: 80% center; 
@@ -357,7 +357,7 @@ h1, h2, h3 {
   width: 100%;
   background: 
     linear-gradient(rgba(244, 248, 252, 0.96), rgba(244, 248, 252, 0.96)),
-    url('/assets/elevatedbg.png') center top/cover no-repeat;
+    url('/assets/elevatedbg.jpg') center top/cover no-repeat;
   min-height: 50vh;
 }
 
@@ -400,26 +400,68 @@ h1, h2, h3 {
   padding: 40px 20px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .padel-experience h2{
   margin-top: 2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   font-weight: bold;
   font-size: clamp(2.6rem, 5vw, 3.5rem);
   color: var(--heading-text);
   text-transform: uppercase;
 }
 
+.padel-slider {
+  width: min(1280px, 100%);
+}
+
+.padel-slider-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0 0 1.5rem;
+}
+
+.slider-btn {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--dark-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 10px 24px rgba(11, 31, 58, 0.1);
+}
+
+.slider-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--accent-gold), #1d4ed8);
+  color: white;
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
+}
+
+.slider-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .padel-cards {
   display: flex;
   gap: 20px;
   width: 100%;
-
-  overflow-x: auto; 
-  padding-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 4px 18px;
   
   scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;
   
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -432,7 +474,7 @@ h1, h2, h3 {
 .padel-cards .card {
   background: var(--surface-card);
   width: 100%;
-  flex: 0 0 calc((100% - 40px) / 2.6);
+  flex: 0 0 calc((100% - 40px) / 3);
   scroll-snap-align: start;
   flex-shrink: 0;
   border-top: 5px solid var(--accent-gold);
@@ -559,6 +601,12 @@ h1, h2, h3 {
 .intro-section.reveal-active .padel-cards .card:nth-child(2) { transition-delay: 0.75s; }
 .intro-section.reveal-active .padel-cards .card:nth-child(3) { transition-delay: 0.9s; }
 .intro-section.reveal-active .padel-cards .card:nth-child(4) { transition-delay: 1.05s; }
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .padel-cards .card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
 
 
 
@@ -873,7 +921,7 @@ h1, h2, h3 {
   height: 600px;
   background:
     linear-gradient(rgba(11, 31, 58, 0.82), rgba(11, 31, 58, 0.82)), 
-    url('assets/readybg.jpg') center/cover no-repeat;
+    url('assets/padel4.jpg') center/cover no-repeat;
   background-position: 50% 60%;
   overflow: hidden;
   display: flex;
