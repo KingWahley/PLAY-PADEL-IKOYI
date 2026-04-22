@@ -200,7 +200,7 @@ h1, h2, h3 {
 }
 
 .hero-content h1 {
-  font-size: clamp(4rem, 8vw, 6.6rem);
+  font-size: clamp(4rem, 6vw, 4.6rem);
   margin-bottom: 14px;
   line-height: 0.88;
   letter-spacing: 0.04em;
@@ -357,7 +357,7 @@ h1, h2, h3 {
   width: 100%;
   background: 
     linear-gradient(rgba(244, 248, 252, 0.96), rgba(244, 248, 252, 0.96)),
-    url('/assets/elevatedbg.jpg') center top/cover no-repeat;
+    url('/assets/LOGO-BG.png') center top/cover no-repeat;
   min-height: 50vh;
 }
 

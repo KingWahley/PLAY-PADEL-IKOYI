@@ -46,6 +46,16 @@ body {
   margin-top: 25px;
 }
 
+.faq-empty-state {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px dashed var(--border-soft);
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
 /* FAQ Item Container */
 .faq-item {
   background: #fff;

@@ -52,7 +52,7 @@
         <h1 class="title">FIND ANSWERS TO COMMON QUESTIONS?</h1>
     
         <div class="search-box">
-          <input type="text" placeholder="Search for answers..." />
+          <input type="text" placeholder="Search for answers..." data-faq-search />
         </div>
     
         <div class="faq-list">
@@ -115,7 +115,19 @@
               <p>Yes. Due to high demand (especially during peak evening hours), we recommend booking at least 48 hours in advance to secure your preferred slot.</p>
             </div>
           </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Where are you located?
+              <span><img src="../assets/downarrow.png" alt="arrowdown"></span>
+            </div>
+            <div class="faq-answer">
+              <p>We are located in Ikoyi, Lagos.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="faq-empty-state" hidden>No matching answers found. Try a different keyword.</p>
     
         <div class="support-card">
           <h2>Still have questions?</h2>

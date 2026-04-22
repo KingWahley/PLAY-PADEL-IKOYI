@@ -136,7 +136,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // --- FAQ ACCORDION LOGIC ---
+  const faqSearchInput = document.querySelector('[data-faq-search]');
   const faqItems = document.querySelectorAll('.faq-item');
+  const faqEmptyState = document.querySelector('.faq-empty-state');
+
+  if (faqSearchInput && faqItems.length) {
+    const normalizeText = (value) => value.toLowerCase().trim();
+
+    const filterFaqItems = () => {
+      const query = normalizeText(faqSearchInput.value);
+      let visibleCount = 0;
+
+      faqItems.forEach((item) => {
+        const questionText = item.querySelector('.faq-question')?.textContent || '';
+        const answerText = item.querySelector('.faq-answer')?.textContent || '';
+        const matches = !query || normalizeText(`${questionText} ${answerText}`).includes(query);
+
+        item.style.display = matches ? '' : 'none';
+
+        if (!matches) {
+          item.classList.remove('active');
+          return;
+        }
+
+        visibleCount += 1;
+      });
+
+      if (faqEmptyState) {
+        faqEmptyState.hidden = visibleCount > 0;
+      }
+    };
+
+    faqSearchInput.addEventListener('input', filterFaqItems);
+    filterFaqItems();
+  }
 
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
